@@ -76,7 +76,7 @@ function LeafletMap({ olat, olng, dlat, dlng, percentage, shipmentId }) {
       setPresentLocation(thirdMarker);
       setActiveAddress(shipmentId);
     }
-  }, [thirdMarker, setPresentLocation]);
+  }, [thirdMarker, setPresentLocation, setActiveAddress, shipmentId]);
 
   // Toggle between views
   const toggleMapView = () => {

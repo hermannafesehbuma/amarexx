@@ -48,7 +48,7 @@ function GoogleSignIn() {
     //   // Unsubscribe from the auth state change listener properly
     //   authListener?.subscription?.unsubscribe();
     // };
-  }, [setUser]);
+  }, [setUser, setIsLoading]);
 
   // Handle logging user after it is set
 }

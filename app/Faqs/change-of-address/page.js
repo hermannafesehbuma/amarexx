@@ -25,11 +25,11 @@ function page() {
             </span>
             To request a Change of Address:
             <br /> Log in to your Amarex account.
-            <br /> Go to the "Track & Manage" section. <br />
+            <br /> Go to the &quot;Track & Manage&quot; section. <br />
             Select the package for which you want to update the delivery
             address. <br />
-            Click on the "Change of Address" option and enter the new delivery
-            details. <br />
+            Click on the &quot;Change of Address&quot; option and enter the new
+            delivery details. <br />
             Confirm your request and make the necessary payment (if applicable).
           </li>
           <li className="mb-5">

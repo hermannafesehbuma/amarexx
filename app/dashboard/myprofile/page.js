@@ -30,7 +30,7 @@ function Page() {
 
       fetchUsers(); // Call the function inside useEffect
     }
-  }, [email]); // Add dependency array to avoid infinite loops
+  }, [email, error]); // Add dependency array to avoid infinite loops
   if (loading) {
     return <Loading />;
   }

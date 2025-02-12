@@ -26,10 +26,10 @@ function page() {
               How do I request a Package Intercept?
             </span>
             To request a Package Intercept, simply log in to your Amarex
-            account, navigate to the "Track & Manage" section, and select the
-            package you wish to intercept. From there, you can choose the
-            desired action: change the delivery address, hold the package at a
-            nearby facility, or return the package to the sender.
+            account, navigate to the &quot;Track & Manage&quot; section, and
+            select the package you wish to intercept. From there, you can choose
+            the desired action: change the delivery address, hold the package at
+            a nearby facility, or return the package to the sender.
           </li>
           <li className="mb-5">
             <span className="font-bold block">
@@ -57,9 +57,10 @@ function page() {
               Can I change the destination address of my package?
             </span>
             Yes, our Package Intercept feature allows you to change the delivery
-            address of your package, whether it's a new home address, a business
-            location, or a nearby pickup facility. This can be done as long as
-            the package is still in transit and hasn&apos;t been delivered.
+            address of your package, whether it&apos;s a new home address, a
+            business location, or a nearby pickup facility. This can be done as
+            long as the package is still in transit and hasn&apos;t been
+            delivered.
           </li>
           <li className="mb-5">
             <span className="font-bold block">

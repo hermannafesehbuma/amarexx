@@ -10,11 +10,10 @@ import HelpMenu from './HelpMenu';
 function MainMenu() {
   const { setActiveMenu, activeMenu } = useUserContext();
 
-  const closeMenu = () => {
-    setActiveMenu(null); // Set activeMenu to null to close all menus
-  };
-
   useEffect(() => {
+    const closeMenu = () => {
+      setActiveMenu(null); // Set activeMenu to null to close all menus
+    };
     const handleClickOutside = (event) => {
       // Ensure the click is outside the menu
       if (
@@ -41,7 +40,7 @@ function MainMenu() {
       window.removeEventListener('click', handleClickOutside);
       window.removeEventListener('keydown', handleEscapeKey);
     };
-  }, [activeMenu]);
+  }, [activeMenu, setActiveMenu]);
 
   return (
     <div className="relative">

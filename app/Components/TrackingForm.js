@@ -50,7 +50,7 @@ export function TrackingForm({ className }) {
 
   return (
     <div
-      className={`${className} flex flex-col items-center p-[10] rounded-md md:w-[90%]  sm:w-[100%] h-[40vh]`}
+      className={`${className} flex flex-col items-center p-[10] rounded-md md:w-[100%]  sm:w-[100%] h-[40vh]`}
     >
       <div className="flex flex-row items-center justify-center w-[90%] xs:text-lg">
         <input

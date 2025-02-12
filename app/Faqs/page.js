@@ -78,8 +78,8 @@ function Faqs() {
   ];
   return (
     <>
-      <div className="h-[50vh] bg-gray-100  flex  flex-col justify-center [clip-path:ellipse(100%_100%_at_40%_0)]">
-        <h1 className="text-5xl">Faqs</h1>
+      <div className="h-[50vh] bg-gray-100  flex  flex-col justify-center [clip-path:ellipse(100%_100%_at_40%_0)] p-10">
+        <h1 className="text-5xl ">Faqs</h1>
         <span className="border-b-4 border-secondary w-[10%] my-3 mt-5"></span>
       </div>
       <div>
@@ -88,37 +88,39 @@ function Faqs() {
           Find answers, tips, and troubleshooting instructions based on our most
           viewed topics.
         </p>
-        <div className="grid grid-cols-5 w-[90%] mx-auto mt-20">
-          <Link href="/Track">
+        <div className="grid md:grid-cols-5 w-[90%] mx-auto mt-20 xs:grid-cols-1">
+          <Link href="/Track" className="xs:p-5 md:p-0">
             <div className="flex flex-col items-center">
               <LuPackageSearch className="text-5xl" />
               <p>Amarex Tracking®</p>
             </div>
           </Link>
 
-          <Link href="/Faqs/informed-delivery">
+          <Link href="/Faqs/informed-delivery" className="xs:p-5 md:p-0">
             <div className="flex flex-col items-center">
               <TbTruckDelivery className="text-5xl" />
               <p>Informed Delivery®</p>
             </div>
           </Link>
 
-          <Link href="/Faqs/package-intercept">
+          <Link href="/Faqs/package-intercept" className="xs:p-5 md:p-0">
             <div className="flex flex-col items-center">
               <LuPackageX className="text-5xl" />
               <p>Package Intercept</p>
             </div>
           </Link>
-          <Link href="/Faqs/change-of-address">
+          <Link href="/Faqs/change-of-address" className="xs:p-5 md:p-0">
             <div className="flex flex-col items-center">
               <FaHouseChimneyUser className="text-5xl" />
               <p>Change Of Address</p>
             </div>
           </Link>
-          <div className="flex flex-col items-center">
-            <GiCardboardBoxClosed className="text-5xl" />
-            <p>Mail & Ship</p>
-          </div>
+          <Link href="/ship/sending-mail" className="xs:p-5 md:p-0">
+            <div className="flex flex-col items-center xs:p-5 md:p-0">
+              <GiCardboardBoxClosed className="text-5xl" />
+              <p>Mail & Ship</p>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="bg-gray-100 p-10 my-20">

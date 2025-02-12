@@ -12,14 +12,14 @@ import HistoryDates from '@/app/Components/HistoryDates';
 function page() {
   return (
     <div>
-      <div className="relative w-screen h-[70vh] mx-auto my-[7%]">
+      <div className="relative w-screen h-[70vh] mx-auto">
         <Image
           src="/aboutUs.jpg"
           alt="Description of image"
           layout="fill"
           objectFit="cover"
         />
-        <div className="bg-white absolute md:w-[40%] xs:w-[80%] h-[30vh] md:left-[55%] top-[20%] md:py-20 px-10 rounded ">
+        <div className="bg-white absolute md:w-[40%] xs:w-[95%] h-[30vh] md:left-[55%] top-[20%] md:py-20 px-10 py-5 rounded ">
           <div className="flex flex-col items-center justify-center">
             <h1 className="text-3xl text-center">Company Information</h1>
             <p className="text-base text-center mt-5">

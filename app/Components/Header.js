@@ -22,6 +22,11 @@ function Header() {
 
   return (
     <>
+      {pathname === '/' ? (
+        ''
+      ) : (
+        <div className="xs:h-[10vh] bg-transparent md:h-0"></div>
+      )}
       {width >= 1133 ? (
         <div
           className={`fixed top-0 w-full z-50 transition-all flex items-center  ${

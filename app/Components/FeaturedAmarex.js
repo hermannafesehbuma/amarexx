@@ -46,7 +46,7 @@ function FeaturedAmarex() {
               whileTap={{ scale: 0.95 }}
               className="flex justify-center"
             >
-              <ButtonBig className="px-10 py-3 bg-primary rounded-full flex items-center mt-5">
+              <ButtonBig className="px-10 py-3 bg-primary rounded-full flex items-center mt-5 xs:mb-10 md:mb-0">
                 Sign Up for Free
               </ButtonBig>
             </motion.div>
@@ -144,7 +144,7 @@ function FeaturedAmarex() {
               whileTap={{ scale: 0.95 }}
               className="flex justify-center"
             >
-              <ButtonBig className="px-10 py-3 bg-primary rounded-full flex items-center mt-5">
+              <ButtonBig className="px-10 py-3 bg-primary rounded-full flex items-center mt-5 xs:mb-10 md:mb-0">
                 Sign Up for Free
               </ButtonBig>
             </motion.div>

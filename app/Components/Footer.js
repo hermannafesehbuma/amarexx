@@ -17,11 +17,11 @@ function Footer() {
           layout="intrinsic"
           sizes="(max-width: 600px) 100px, 200px"
           alt="Header-Logo"
-          className="md:ml-[11.5%] xs:ml-[15%]"
+          className="md:ml-[11.5%] xs:ml-[9%]"
         />
       </Link>
       <div className=" grid grid-cols-5 w-[80%] mx-auto pb-10 xs:flex xs:flex-col sm:flex-row">
-        <div className="xs:ml-10 md:ml-10 text-xs xs:mb-10 md:mb-0 col-span-1">
+        <div className="xs:ml-2 md:ml-10 text-xs xs:mb-10 md:mb-0 col-span-1">
           <p className="font-bold mb-2">HELPFUL LINKS</p>
           <ul className="text-xs">
             <li className="mb-2">
@@ -39,7 +39,7 @@ function Footer() {
           </ul>
         </div>
 
-        <div className="xs:ml-10 md:ml-20 text-xs xs:mb-10 md:mb-0 col-span-1">
+        <div className="xs:ml-2 md:ml-20 text-xs xs:mb-10 md:mb-0 col-span-1">
           <p className="font-bold mb-2 uppercase">On About.Amarex.com</p>
           <ul className="text-xs">
             <li className="mb-2">
@@ -56,7 +56,7 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="xs:ml-10 md:ml-20 text-xs col-span-1">
+        <div className="xs:ml-2 md:ml-20 text-xs col-span-1">
           <p className="font-bold mb-2 uppercase">Legal Information</p>
           <ul className="text-xs">
             <li className="mb-2">
@@ -72,7 +72,7 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="xs:ml-10 md:ml-20 text-xs col-span-2">
+        <div className="xs:ml-2 md:ml-20 text-xs col-span-2">
           <NewsletterForm />
         </div>
       </div>

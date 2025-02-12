@@ -9,9 +9,9 @@ function FaqsSelector({ data }) {
     setActiveItem(activeItem === id ? null : id);
   }
   return (
-    <div className="bg-gray-100 py-20">
+    <div className="bg-gray-100 py-20 w-full">
       <h3 className="text-center text-3xl mb-10">More Questions</h3>
-      <div className="w-[70%] mx-auto">
+      <div className="xs:w-[98%] md:w-[70%] mx-auto">
         <div className="p-4">
           <ul className="list-none space-y-2">
             {data.map((item) => (

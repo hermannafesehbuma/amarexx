@@ -18,7 +18,7 @@ function Input() {
   }
   return (
     <div className=" flex flex-col lg:w-[70%] md-[80%] xs:w-[90%] xs:mx-auto">
-      <div className="flex mb-10 md:w-[85%] xs:w-[100%] mx-auto mt-10 ">
+      <div className="flex mb-10 md:w-[85%] xs:w-[100%] mx-auto mt-10 justify-center">
         <MainNav
           onClick={() => handleActiveButton(1)}
           className={`${

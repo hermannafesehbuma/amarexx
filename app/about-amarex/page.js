@@ -15,14 +15,14 @@ function page() {
         </h1>
         <Seperator />
       </div>
-      <div className="relative w-[80%] h-[70vh] mx-auto my-20">
+      <div className="relative w-[90%] h-[70vh] mx-auto my-20">
         <Image
           src="/informedDelivery.jpg"
           alt="Description of image"
           layout="fill"
           objectFit="cover"
         />
-        <div className="bg-white absolute md:w-[40%] xs:w-[90%] h-[50vh] md:left-[55%] top-[20%] p-10 rounded">
+        <div className="bg-white absolute md:w-[40%] xs:w-[95%] h-[50vh] md:left-[55%] top-[20%] p-10 rounded">
           <div>
             <p className="text-xs tracking-widest">Customer First</p>
             <h3 className="md:text-3xl xs:text-xl">
@@ -42,7 +42,7 @@ function page() {
           </div>
         </div>
       </div>
-      <div className="bg-gray-100 py-20 [clip-path:ellipse(100%_100%_at_40%_0)]">
+      <div className="bg-gray-100 py-20 [clip-path:ellipse(150%_95%_at_40%_0)]">
         <div className="w-[80%] mx-auto ">
           <p>
             Connecting people with goods, services and ideas creates
@@ -58,7 +58,9 @@ function page() {
                 height={300}
                 width={600}
               />
-              <h3 className="text-3xl my-5">Company Information</h3>
+              <h3 className="text-3xl my-5 xs:text-center">
+                Company Information
+              </h3>
               <p className="text-center">
                 The Amarex network offers next-day service to hundreds of
                 customers.
@@ -94,7 +96,7 @@ function page() {
                 height={300}
                 width={600}
               />
-              <h3 className="text-3xl my-5">Pet Delivery System</h3>
+              <h3 className="text-3xl my-5 text-center">Pet Delivery System</h3>
               <p className="text-center">
                 Learn more about our excellent pet delivery system
               </p>
@@ -108,7 +110,7 @@ function page() {
         </div>
       </div>
       <div className="my-20 flex flex-col items-center">
-        <h3 className="text-3xl">
+        <h3 className="text-3xl text-center px-5">
           Customer First, People Led, Innovation Driven
         </h3>
         <Seperator />

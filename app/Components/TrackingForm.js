@@ -57,7 +57,7 @@ export function TrackingForm({ className }) {
           type="text"
           value={trackingNumber}
           onChange={(e) => setTrackingNumber(e.target.value)}
-          className="p-3 border border-gray-300  w-[70%] text-black focus:outline-none"
+          className="p-3 border border-gray-300  w-[70%] text-black focus:outline-none rounded-none"
           placeholder="Enter Tracking Number"
         />
         <ButtonBig

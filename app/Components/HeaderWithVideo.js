@@ -16,6 +16,8 @@ function HeaderWithVideo() {
           autoPlay
           loop
           muted
+          playsInline
+          preload="auto"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
           {/* <source src="/videos/background-video.webm" type="video/webm" />

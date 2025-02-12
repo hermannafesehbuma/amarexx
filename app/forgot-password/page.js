@@ -14,7 +14,7 @@ export default function Page() {
 
     // Make the API call to send the reset password email
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}`, // Optional: set redirect URL
+      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password`, // Optional: set redirect URL
     });
 
     if (error) {

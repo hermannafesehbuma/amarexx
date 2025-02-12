@@ -18,12 +18,14 @@ export async function POST(req) {
       );
     }
 
-    // Setup email transporter
+    // Setup email transporter for Titan Mail
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.titan.email', // Titan SMTP server
+      port: 465, // Or 587 for TLS
+      secure: true, // Use true for SSL (port 465)
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.TITAN_SMTP_USER, // Your Titan email address
+        pass: process.env.TITAN_SMTP_PASS, // Your Titan Mail App Password
       },
     });
 
@@ -31,7 +33,7 @@ export async function POST(req) {
 
     // Compose email
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: process.env.TITAN_SMTP_USER, // Sender email from your Titan account
       to: [shipmentData.shipper.email, shipmentData.receiver.email],
       subject: `Shipment Status Updated - Tracking Number: ${shipmentData.trackingNumber}`,
       html: `

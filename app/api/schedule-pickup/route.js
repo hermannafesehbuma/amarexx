@@ -14,12 +14,14 @@ export async function POST(req) {
       email,
     } = await req.json();
 
-    // Configure SMTP Transporter (Gmail)
+    // Configure SMTP Transporter (Titan Mail)
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: process.env.TITAN_SMTP_HOST, // Titan SMTP server
+      port: process.env.TITAN_SMTP_PORT, // 465 (SSL) or 587 (TLS)
+      secure: true, // Use false for port 587 (STARTTLS)
       auth: {
-        user: process.env.EMAIL_USER, // Your Gmail (sender's email)
-        pass: process.env.EMAIL_PASS, // Your App Password
+        user: process.env.TITAN_SMTP_USER, // Your Titan email (sender's email)
+        pass: process.env.TITAN_SMTP_PASS, // Your Titan Mail App Password
       },
     });
 

@@ -26,7 +26,7 @@ function SupportFeatures() {
           </ButtonBigTransparent>
           <br />
           Or by email:
-          <span className="underline text-blue-800">contact@amarex.com</span>
+          <span className="underline text-blue-800">support@amarexx.com</span>
         </div>
         <div className="w-[95%] mx-auto p-5">
           <FaCreditCard className="text-5xl my-5" />
@@ -37,7 +37,7 @@ function SupportFeatures() {
           </ButtonBigTransparent>
           <br />
           Or by email:
-          <span className="underline text-blue-800">contact@amarex.com</span>
+          <span className="underline text-blue-800">support@amarexx.com</span>
         </div>
         <div className="w-[95%] mx-auto p-5">
           <HiChatBubbleBottomCenterText className="text-5xl my-5" />
@@ -48,7 +48,7 @@ function SupportFeatures() {
           </ButtonBigTransparent>
           <br />
           Or by email:
-          <span className="underline text-blue-800">contact@amarex.com</span>
+          <span className="underline text-blue-800">support@amarexx.com</span>
         </div>
       </div>
     </div>

@@ -33,8 +33,6 @@ import {
   fetchActivity,
   fetchShipmentByTrackingNumber,
 } from '@/app/api/supabaseapi';
-
-supabase;
 async function Page({ params }) {
   const { trackingNumber } = await params; //
   const { data, error } = await fetchShipmentByTrackingNumber(trackingNumber);

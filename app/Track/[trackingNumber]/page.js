@@ -2,10 +2,7 @@ import { format } from 'date-fns';
 import { MdOutlineLocalShipping } from 'react-icons/md';
 import { MdOutlinePets } from 'react-icons/md';
 import { RxActivityLog } from 'react-icons/rx';
-import {
-  fetchActivity,
-  fetchShipmentByTrackingNumber,
-} from '@/app/api/supabaseapi';
+
 import MapWrapper from '@/app/Components/Functions/MapWrapper';
 import FullSeperator from '@/app/Components/FullSeperator';
 import TimerStatusBar from '@/app/dashboard/Components/StatusBar';
@@ -32,7 +29,12 @@ import { CiClock1 } from 'react-icons/ci';
 import { SlCalender } from 'react-icons/sl';
 import Link from 'next/link';
 import Footer from '@/app/Components/Footer';
+import {
+  fetchActivity,
+  fetchShipmentByTrackingNumber,
+} from '@/app/api/supabaseapi';
 
+supabase;
 async function Page({ params }) {
   const { trackingNumber } = await params; //
   const { data, error } = await fetchShipmentByTrackingNumber(trackingNumber);

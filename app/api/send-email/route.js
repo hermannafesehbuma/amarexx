@@ -18,7 +18,7 @@ export async function POST(req) {
 
     // Email content configuration
     const mailOptions = {
-      from: process.env.TITAN_SMTP_USER, // Sender's email (from environment variables)
+      from: email, // Sender's email (from environment variables)
       to: process.env.TITAN_SMTP_USER, // Recipient email (set in environment variables)
       subject: `New Contact Form Submission from ${firstName} ${lastName}`, // Subject of the email
       text: `

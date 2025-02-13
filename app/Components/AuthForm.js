@@ -27,6 +27,7 @@ const AuthForm = () => {
       // Trigger Google OAuth login and await the result
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
+        redirectTo: 'https://amarexx.com/dashboard', // Redirect URL after successful login
       });
 
       // If there's an error, throw it
@@ -35,16 +36,14 @@ const AuthForm = () => {
       }
 
       // If no error, redirect to the dashboard
-      router.push('/dashboard');
     } catch (error) {
       console.error('Error logging in with Google:', error.message);
     } finally {
       setLoading(false); // Reset loading to false
       console.log('Sign-in complete');
     }
+    GoogleSignIn();
   };
-
-  GoogleSignIn();
 
   const handleAuth = async (e) => {
     e.preventDefault();

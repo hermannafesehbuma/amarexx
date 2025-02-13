@@ -20,6 +20,7 @@ function GoogleSignIn() {
       if (session) {
         setIsLoading(true);
         setUser(session.user); // Set the user if session exists
+        router.push('/dashboard');
         setIsLoading(false);
       } else {
         setUser(null); // Set user to null if no session exists

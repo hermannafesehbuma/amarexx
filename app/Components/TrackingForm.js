@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { useUserContext } from '../Context/UserContext';
 import Loading from '../loading';
+import LoadingSpinner from './LoadingSpinner';
 export function TrackingForm({ className }) {
   const [trackingNumber, setTrackingNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
@@ -68,7 +69,14 @@ export function TrackingForm({ className }) {
             loading ? 'opacity-50 cursor-not-allowed' : ''
           }`}
         >
-          {loading ? <Loading /> : 'Track Shipment'}
+          {loading ? (
+            <span>
+              Tracking
+              <LoadingSpinner />
+            </span>
+          ) : (
+            'Track Shipment'
+          )}
         </ButtonBig>
       </div>
       {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}

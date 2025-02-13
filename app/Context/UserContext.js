@@ -6,13 +6,16 @@ import { createContext, useState, useContext, useEffect } from 'react';
 const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
-    // Load user from local storage on initial render
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
     if (typeof window !== 'undefined') {
-      return JSON.parse(localStorage.getItem('user')) || null;
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser)); // Load user from localStorage if exists
+      }
     }
-    return null;
-  });
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
 
   const [activeMenu, setActiveMenu] = useState(null);
   const [isLoading, setIsLoading] = useState(false);

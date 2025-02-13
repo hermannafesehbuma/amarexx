@@ -78,7 +78,6 @@ const AuthForm = () => {
       if (isLogin) {
         // Use Next.js router for client-side navigation
         router.push('/dashboard'); // Redirect after login
-        window.location.reload();
       }
     }
 

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import GoogleSignIn from './GoogleSignIn';
 import ButtonBig from './ButtonBig';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const AuthForm = () => {
   const [email, setEmail] = useState('');
@@ -16,22 +17,33 @@ const AuthForm = () => {
   const [message, setMessage] = useState(null);
   const [isLogin, setIsLogin] = useState(true); // Toggle login/signup
 
+  const router = useRouter();
+
   const handleGoogleSignIn = async () => {
-    try {
-      setLoading(true); // Set loading to true
-      console.log('Signing in...');
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-      });
-      if (error) throw error;
-    } catch (error) {
-      console.error('Error logging in with Google:', error.message);
-    } finally {
-      setLoading(false); // Reset loading to false
-      console.log('Sign-in complete');
-      GoogleSignIn();
-    }
-  };
+    const handleGoogleSignIn = async () => {
+      try {
+        setLoading(true); // Set loading to true
+        console.log('Signing in...');
+    
+        // Trigger Google OAuth login and await the result
+        const { error } = await supabase.auth.signInWithOAuth({
+          provider: 'google',
+        });
+    
+        // If there's an error, throw it
+        if (error) {
+          throw error;
+        }
+    
+        // If no error, redirect to the dashboard
+        router.push('/dashboard');
+      } catch (error) {
+        console.error('Error logging in with Google:', error.message);
+      } finally {
+        setLoading(false); // Reset loading to false
+        console.log('Sign-in complete');
+      }
+    };
 
   GoogleSignIn();
 

@@ -42,6 +42,7 @@ const AuthForm = () => {
       setLoading(false); // Reset loading to false
       console.log('Sign-in complete');
     }
+    GoogleSignIn();
   };
 
   const handleAuth = async (e) => {
@@ -81,6 +82,7 @@ const AuthForm = () => {
     }
 
     setLoading(false);
+    GoogleSignIn();
   };
 
   return (

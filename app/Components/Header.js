@@ -11,6 +11,7 @@ import useWindowWidth from './Functions/getBrowserWidth';
 import MobileHeader from './MobileHeader';
 import { useUserContext } from '../Context/UserContext';
 import GoogleSignIn from './GoogleSignIn';
+import { useEffect } from 'react';
 
 function Header() {
   const { user, setUser } = useUserContext();

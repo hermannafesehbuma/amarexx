@@ -10,7 +10,7 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 import { useEffect, useState } from 'react';
 import ButtonSpinner from './ButtonSpinner';
 import { useRouter } from 'next/navigation';
-import { useUserContext } from '../contexts/UserContext'; // Import the context
+import { useUserContext } from '../Context/UserContext';
 
 function UserDetails() {
   const { user, setUser } = useUserContext(); // Access user from context

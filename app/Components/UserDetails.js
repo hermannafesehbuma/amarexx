@@ -9,27 +9,14 @@ import Image from 'next/image';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import { useEffect, useState } from 'react';
 import ButtonSpinner from './ButtonSpinner';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { useUserContext } from '../contexts/UserContext'; // Import the context
 
 function UserDetails() {
-  const [user, setUser] = useState(null);
+  const { user, setUser } = useUserContext(); // Access user from context
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
-  // Load user from local storage when component mounts
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []); // Only run once when the component mounts
-
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem('user', JSON.stringify(user)); // Save user to localStorage when user state is updated
-    }
-  }, [user]); // Sync user state with localStorage
 
   const email = user?.user_metadata?.email;
   const prefix = email?.split('@')[0];
@@ -41,8 +28,7 @@ function UserDetails() {
       setLoading(true);
       await supabase.auth.signOut();
 
-      setUser(null);
-      localStorage.removeItem('user'); // Clear user from local storage
+      setUser(null); // Clear user from context
 
       router.replace('/');
     } catch (error) {

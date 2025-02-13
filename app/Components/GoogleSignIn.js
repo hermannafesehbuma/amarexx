@@ -49,7 +49,7 @@ function GoogleSignIn() {
     //   // Unsubscribe from the auth state change listener properly
     //   authListener?.subscription?.unsubscribe();
     // };
-  }, [setUser, setIsLoading]);
+  }, [setUser, setIsLoading, router]);
 
   // Handle logging user after it is set
 }

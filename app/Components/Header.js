@@ -10,8 +10,10 @@ import MainMenu from './MainMenu';
 import useWindowWidth from './Functions/getBrowserWidth';
 import MobileHeader from './MobileHeader';
 import { useUserContext } from '../Context/UserContext';
+import GoogleSignIn from './GoogleSignIn';
 
 function Header() {
+  GoogleSignIn();
   const { user, setUser } = useUserContext();
   console.log(user);
   const pathname = usePathname();

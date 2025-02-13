@@ -20,30 +20,29 @@ const AuthForm = () => {
   const router = useRouter();
 
   const handleGoogleSignIn = async () => {
-    const handleGoogleSignIn = async () => {
-      try {
-        setLoading(true); // Set loading to true
-        console.log('Signing in...');
-    
-        // Trigger Google OAuth login and await the result
-        const { error } = await supabase.auth.signInWithOAuth({
-          provider: 'google',
-        });
-    
-        // If there's an error, throw it
-        if (error) {
-          throw error;
-        }
-    
-        // If no error, redirect to the dashboard
-        router.push('/dashboard');
-      } catch (error) {
-        console.error('Error logging in with Google:', error.message);
-      } finally {
-        setLoading(false); // Reset loading to false
-        console.log('Sign-in complete');
+    try {
+      setLoading(true); // Set loading to true
+      console.log('Signing in...');
+
+      // Trigger Google OAuth login and await the result
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+      });
+
+      // If there's an error, throw it
+      if (error) {
+        throw error;
       }
-    };
+
+      // If no error, redirect to the dashboard
+      router.push('/dashboard');
+    } catch (error) {
+      console.error('Error logging in with Google:', error.message);
+    } finally {
+      setLoading(false); // Reset loading to false
+      console.log('Sign-in complete');
+    }
+  };
 
   GoogleSignIn();
 

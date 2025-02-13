@@ -13,9 +13,12 @@ import { useUserContext } from '../Context/UserContext';
 import GoogleSignIn from './GoogleSignIn';
 
 function Header() {
-  GoogleSignIn();
   const { user, setUser } = useUserContext();
-  console.log(user);
+  useEffect(() => {
+    if (user) {
+      GoogleSignIn();
+    }
+  }, [user]);
   const pathname = usePathname();
 
   const scrollPosition = useScrollPosition(100);

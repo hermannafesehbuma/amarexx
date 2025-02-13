@@ -24,25 +24,22 @@ const AuthForm = () => {
       setLoading(true); // Set loading to true
       console.log('Signing in...');
 
-      // Trigger Google OAuth login and await the result
+      // Trigger Google OAuth login
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         redirectTo: 'https://amarexx.com/dashboard', // Redirect URL after successful login
       });
 
       // If there's an error, throw it
-      if (error) {
-        throw error;
-      }
+      if (error) throw error;
 
-      // If no error, redirect to the dashboard
+      // You don't need to manually handle redirection; Supabase will do that after successful login
     } catch (error) {
       console.error('Error logging in with Google:', error.message);
     } finally {
       setLoading(false); // Reset loading to false
       console.log('Sign-in complete');
     }
-    GoogleSignIn();
   };
 
   const handleAuth = async (e) => {
@@ -82,7 +79,6 @@ const AuthForm = () => {
     }
 
     setLoading(false);
-    GoogleSignIn();
   };
 
   return (

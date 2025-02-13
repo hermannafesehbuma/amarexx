@@ -5,6 +5,7 @@ import { UserContextProvider } from './Context/UserContext';
 import { TimerProvider } from './Context/TimerContext';
 
 import { DM_Sans } from 'next/font/google';
+import GoogleSignIn from './Components/GoogleSignIn';
 
 const dmSans = DM_Sans({
   subsets: ['latin'], // Load only necessary character sets
@@ -18,6 +19,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  GoogleSignIn();
   return (
     <html lang="en">
       <body

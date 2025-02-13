@@ -14,12 +14,7 @@ import GoogleSignIn from './GoogleSignIn';
 import { useEffect } from 'react';
 
 function Header() {
-  const { user, setUser } = useUserContext();
-  useEffect(() => {
-    if (user) {
-      GoogleSignIn();
-    }
-  }, [user]);
+  GoogleSignIn();
   const pathname = usePathname();
 
   const scrollPosition = useScrollPosition(100);

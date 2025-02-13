@@ -49,6 +49,7 @@ const AuthForm = () => {
     setMessage(null);
 
     let result;
+
     if (isLogin) {
       // Login
       result = await supabase.auth.signInWithPassword({
@@ -73,8 +74,10 @@ const AuthForm = () => {
           ? 'Login successful! Redirecting...'
           : 'Signup successful! Check your email for verification.'
       );
+
       if (isLogin) {
-        window.location.href = '/dashboard'; // Redirect after login
+        // Use Next.js router for client-side navigation
+        router.push('/dashboard'); // Redirect after login
       }
     }
 

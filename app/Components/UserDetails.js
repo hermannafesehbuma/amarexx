@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { GrNext } from 'react-icons/gr';
 import ButtonBig from './ButtonBig';
-import GoogleSignIn from './GoogleSignIn';
+import GoogleSignIn from './GoogleSignIn'; // It should be triggered on login, not directly here
 import { supabase } from '../supabaseClient';
 import Image from 'next/image';
 import { RiArrowDropDownLine } from 'react-icons/ri';
@@ -16,7 +16,6 @@ function UserDetails() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const pathname = usePathname();
 
   // Load user from local storage when component mounts
   useEffect(() => {
@@ -24,7 +23,13 @@ function UserDetails() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-  }, []);
+  }, []); // Only run once when the component mounts
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user)); // Save user to localStorage when user state is updated
+    }
+  }, [user]); // Sync user state with localStorage
 
   const email = user?.user_metadata?.email;
   const prefix = email?.split('@')[0];
@@ -50,8 +55,6 @@ function UserDetails() {
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
   };
-
-  GoogleSignIn();
 
   const userContent = loading ? (
     <div>Loading...</div>

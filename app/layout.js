@@ -17,11 +17,12 @@ export const generateMetadata = () => {
   return {
     title: 'Amarex Express - Fast & Secure Shipping',
     description:
-      'Ship goods and pets worldwide with Amarex Express. Fast, reliable, and secure logistics.',
+      'SWelcome to Amarex Express - Find Services for shipping your packages, pets, shipment tracking, shipping rates, and tools to support shippers and small buisness.',
     keywords: ['shipping', 'logistics', 'courier', 'Amarex Express'],
     openGraph: {
       title: 'Amarex Express',
-      description: 'Reliable logistics for goods and pets.',
+      description:
+        'Welcome to Amarex Express - Find Services for shipping your packages, pets, shipment tracking, shipping rates, and tools to support shippers and small buisness. ',
       url: 'https://amarexx.com',
       siteName: 'Amarex Express',
       images: [

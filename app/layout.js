@@ -86,6 +86,10 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
+        <meta
+          name="google-site-verification"
+          content="gLwR-ISOyVSDF9CIr6UA4OL3gWeao6kJZwPuwR2Fyqk"
+        />
       </head>
       <body
         className={`${dmSans.className} antialiased bg-primary-950 min-h-screen flex flex-col relative text-zinc-900 font-medium`}

@@ -22,7 +22,7 @@ function SupportFeatures() {
             <br /> Saturday: 8 a.m. to 5 p.m.
           </p>
           <ButtonBigTransparent className="px-10 py-3  rounded-full flex items-center border-2 border-primary">
-            +1 426 278 3527 <GrNext />
+            +1 24 426-1410 <GrNext />
           </ButtonBigTransparent>
           <br />
           Or by email:
@@ -33,7 +33,7 @@ function SupportFeatures() {
           <h3 className="font-bold my-5">Billing Questions</h3>
           <p className="my-5">Monday - Friday: 9 a.m. to 12 p.m.</p>
           <ButtonBigTransparent className="px-10 py-3  rounded-full flex items-center border-2 border-primary">
-            +1 426 278 3527 <GrNext />
+            +1 24 426-1410 <GrNext />
           </ButtonBigTransparent>
           <br />
           Or by email:
@@ -44,7 +44,7 @@ function SupportFeatures() {
           <h3 className="font-bold my-5">Technical Support</h3>
           <p className="my-5">Monday - Friday: 8:30 am to 6 p.m.</p>
           <ButtonBigTransparent className="px-10 py-3  rounded-full flex items-center border-2 border-primary">
-            +1 426 278 3527 <GrNext />
+            +1 24 426-1410 <GrNext />
           </ButtonBigTransparent>
           <br />
           Or by email:

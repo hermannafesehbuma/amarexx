@@ -22,7 +22,7 @@ const Carousel = ({ items }) => {
     setCurrentIndex(index);
   };
   return (
-    <div className="relative w-[60%] mx-auto overflow-hidden mt-20">
+    <div className="relative md:w-[60%] xs:w-[95%] mx-auto overflow-hidden mt-20">
       {/* Carousel Items */}
       <div
         className="flex transition-transform duration-500"

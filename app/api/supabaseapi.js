@@ -34,7 +34,6 @@ export const fetchAllShipmentsforUpdate = async () => {
 };
 
 export const createNewShipment = async (data) => {
-  console.log(data);
   try {
     let relatedItemId = null; // ID of the inserted pet or good
     let relatedItemType = ''; // To indicate whether it's a pet or a good
@@ -127,9 +126,11 @@ export const createNewShipment = async (data) => {
       .single();
 
     if (shipmentError) {
+      console.log('error occured while creating shipment ......');
       throw new Error(`Failed to insert shipment: ${shipmentError.message}`);
     }
 
+    console.log(`shipmenntdata: ${shipmentData}`);
     return { relatedItemId, relatedItemType, shipment: shipmentData }; // Return the ID, type, and shipment data
   } catch (error) {
     console.error('Error creating shipment:', error.message);

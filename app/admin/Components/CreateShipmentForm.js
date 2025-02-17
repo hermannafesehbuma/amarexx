@@ -111,11 +111,11 @@ function CreateShipmentForm({
       // Step 1: Update the shipment status
       const { shipmentData } = await updateStatusShipment(data);
 
-      if (formerror) {
-        console.error('Failed to update shipment status:', formerror);
+      if (!shipmentData) {
+        console.error('Failed to update shipment status');
         return;
       }
-
+      console.log(shipmentData);
       setSuccessMessage('Shipment was successfully Created');
 
       // Step 2: Fetch the tracking number based on the activeShipment.shipment_id

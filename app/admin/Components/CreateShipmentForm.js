@@ -417,6 +417,17 @@ function CreateShipmentForm({
               <option value={2}>Goods</option>
             </select>
           </div>
+          <div className="flex flex-col md:w-[48%] xs:w-[100%]">
+            <label className="text-sm">
+              Progress <span className="text-red-400 font-bold text-xs">*</span>
+            </label>
+            <input
+              name="percentage"
+              id="percenytage"
+              placeholder="progress"
+              className=" rounded-sm p-2 focus:outline-none border border-primary"
+            />
+          </div>
         </div>
         {shipmentType === 1 ? (
           <div>
@@ -434,18 +445,6 @@ function CreateShipmentForm({
                 >
                   <option value={1}>Crate</option>
                 </select>
-              </div>
-              <div className="flex flex-col md:w-[48%] xs:w-[100%]">
-                <label className="text-sm">
-                  Total Duration{' '}
-                  <span className="text-red-400 font-bold text-xs">*</span>
-                </label>
-                <input
-                  name="totalDuration"
-                  id="totalDuration"
-                  placeholder="Total Duration"
-                  className=" rounded-sm p-2 focus:outline-none border border-primary"
-                />
               </div>
             </div>
             <div className="w-[100%] flex md:flex-row xs:flex-col justify-between mt-10">
@@ -556,18 +555,6 @@ function CreateShipmentForm({
                   name="itemName"
                   id="itemName"
                   placeholder="Item Name"
-                  className=" rounded-sm p-2 focus:outline-none border border-primary"
-                />
-              </div>
-              <div className="flex flex-col md:w-[48%] xs:w-[100%]">
-                <label className="text-sm">
-                  Progress{' '}
-                  <span className="text-red-400 font-bold text-xs">*</span>
-                </label>
-                <input
-                  name="percentage"
-                  id="percenytage"
-                  placeholder="progress"
                   className=" rounded-sm p-2 focus:outline-none border border-primary"
                 />
               </div>

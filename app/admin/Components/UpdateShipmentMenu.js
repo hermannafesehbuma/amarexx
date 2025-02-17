@@ -432,8 +432,8 @@ function UpdateShipmentMenu({
                   <span className="text-red-400 font-bold text-xs">*</span>
                 </label>
                 <input
-                  name="destination_state_province_region"
-                  id="destination_state_province_region"
+                  name="destination_state"
+                  id="destination_state"
                   value={formData.destination_state}
                   placeholder="State/ City/ Province"
                   className=" rounded-sm p-2 focus:outline-none border border-primary"

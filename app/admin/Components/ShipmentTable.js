@@ -26,12 +26,13 @@ function ShipmentTable({
   const [activeShipment, setActiveShipment] = useState('null');
   const [errMessage, setErrMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  function handleDeleteUser(shipmentId) {
-    const error = deleteShipment(shipmentId);
+  async function handleDeleteUser(shipmentId) {
+    console.log(shipmentId);
+    const error = await deleteShipment(shipmentId);
     if (error) {
       setErrMessage('This Shipment Failed to Delete, Try Again');
     } else {
-      setErrMessage('Shipment has been deleted Succesfully');
+      setSuccessMessage('Shipment has been deleted Succesfully');
     }
   }
 

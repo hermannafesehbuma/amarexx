@@ -26,7 +26,7 @@ export const generateMetadata = () => {
       siteName: 'Amarex Express',
       images: [
         {
-          url: 'https://qmkoxktojvjqokgxzqxw.supabase.co/storage/v1/object/public/amarex/logo-white.png',
+          url: 'https://qmkoxktojvjqokgxzqxw.supabase.co/storage/v1/object/public/amarex//logo-amarex.png',
           width: 1200,
           height: 630,
           alt: 'Amarex Express Logo',
@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
               '@type': 'Organization',
               name: 'Amarex Express',
               url: 'https://amarexx.com',
-              logo: 'https://qmkoxktojvjqokgxzqxw.supabase.co/storage/v1/object/public/amarex/logo-white.png',
+              logo: 'https://qmkoxktojvjqokgxzqxw.supabase.co/storage/v1/object/public/amarex//logo-amarex.png',
               sameAs: [
                 'https://wwww.facebook.com/share/1E2yHUswVX/?mibextid=wwXIfr',
               ],

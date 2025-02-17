@@ -1,25 +1,51 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { createClient } from '@supabase/supabase-js';
 import NavBar from '../Components/NavBar';
 
+// Initialize Supabase client
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
+
 export default function ShipmentLayout({ children }) {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(null);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem('user'));
-  //   console.log(user.email);
+  useEffect(() => {
+    async function checkUserRole() {
+      // Get authenticated user
+      const {
+        data: { user },
+        error: authError,
+      } = await supabase.auth.getUser();
 
-  //   if (!user || user.email !== 'eamarex@gmail.com') {
-  //     router.replace('/admin'); // Redirect unauthorized users
-  //   } else {
-  //     setIsAuthorized(true);
-  //   }
-  // }, [router]);
+      if (authError || !user) {
+        router.push('/admin'); // Redirect if not logged in
+        return;
+      }
 
-  // if (!isAuthorized) return null; // Prevent layout rendering until check is complete
+      // Fetch user role from profiles table
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('user_id', user.id) // Make sure you match the correct user_id
+        .single();
+
+      if (error || data?.role !== 'admin') {
+        router.push('/dashboard'); // Redirect if not an admin
+      } else {
+        setIsAuthorized(true); // Set authorization state to true if admin
+      }
+    }
+
+    checkUserRole();
+  }, [router]);
+
+  if (isAuthorized === null) return <p>Loading...</p>; // Show loading while checking
 
   return (
     <div className="grid md:grid-cols-4 xs:grid-cols-1 mt-[6.6%]">

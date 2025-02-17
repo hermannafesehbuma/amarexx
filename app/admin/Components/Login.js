@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/app/supabaseClient';
-import { updatePassword } from '@/app/api/supabaseapi';
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -14,11 +13,6 @@ export default function AdminLogin() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (email !== 'eamarex@gmail.com') {
-      setError('Access denied: Invalid email address.');
-      return;
-    }
-
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -26,9 +20,29 @@ export default function AdminLogin() {
 
     if (error) {
       setError(error.message);
-    } else {
-      router.push('/admin/dashboard'); // Redirect on success
+      return;
     }
+
+    // Extract user UUID
+    const userId = data.user?.id;
+    if (!userId) {
+      setError('User ID not found.');
+      return;
+    }
+
+    // Fetch user role from Supabase using UUID
+    const { data: userRole, error: roleError } = await supabase
+      .from('profiles') // Ensure 'profiles' table has 'user_id' as UUID
+      .select('role')
+      .eq('user_id', userId)
+      .single();
+
+    if (roleError || !userRole || userRole.role !== 'admin') {
+      setError('Access denied: You are not an admin.');
+      return;
+    }
+
+    router.push('/admin/dashboard'); // Redirect only if admin
   };
 
   return (

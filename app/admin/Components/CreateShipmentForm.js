@@ -109,7 +109,7 @@ function CreateShipmentForm({
 
     try {
       // Step 1: Update the shipment status
-      const { shipmentData } = await updateStatusShipment(data);
+      const { shipmentData } = await createNewShipment(data);
 
       if (!shipmentData) {
         console.error('Failed to update shipment status');
@@ -119,15 +119,10 @@ function CreateShipmentForm({
       setSuccessMessage('Shipment was successfully Created');
 
       // Step 2: Fetch the tracking number based on the activeShipment.shipment_id
-      const shipmentDetails = {
-        trackingNumber: shipmentData.trackingNumber,
-        shipperEmail: shipmentData.shipper?.email,
-        receiverEmail: shipmentData.receiver?.email,
-        status: shipmentData.status_id?.status,
-      };
-
+      const { shipmentData: shipmentDetails } = await fetchTrackingNumber(
+        shipmentData.shipment_id
+      );
       console.log(shipmentDetails);
-
       // Step 3: Call the API to send email notifications
       const response = await fetch('/api/shipment-creation', {
         method: 'POST',
@@ -151,7 +146,6 @@ function CreateShipmentForm({
       setErrMessage('An error occurred while adding the shipment');
     }
   };
-
   return (
     <div classname="h-full w-full overflow-y-auto absolute top-0 left-0 bg-white p-5 mt-20">
       <form className="w-[90%] mx-auto" onSubmit={handleSubmit}>

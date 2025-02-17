@@ -34,6 +34,7 @@ export const fetchAllShipmentsforUpdate = async () => {
 };
 
 export const createNewShipment = async (data) => {
+  console.log(data);
   try {
     let relatedItemId = null; // ID of the inserted pet or good
     let relatedItemType = ''; // To indicate whether it's a pet or a good
@@ -51,14 +52,13 @@ export const createNewShipment = async (data) => {
             petNumber: data.petNumber,
           },
         ])
-        .select('pet_id') // Only fetch the `pet_id` field
+        .select('pet_id')
         .single();
 
-      if (petError) {
+      if (petError)
         throw new Error(`Failed to insert pet: ${petError.message}`);
-      }
 
-      relatedItemId = petData?.pet_id; // Save the inserted pet ID
+      relatedItemId = petData?.pet_id;
       relatedItemType = 'pet';
     } else if (data.itemName) {
       const { data: goodData, error: goodError } = await supabase
@@ -69,17 +69,16 @@ export const createNewShipment = async (data) => {
             dimensions: data.itemDimension,
             item_id: data.packageType,
             weight: data.itemWeight,
-            Item_number: data.itemNumber,
+            item_number: data.itemNumber, // Ensure correct lowercase naming
           },
         ])
-        .select('goods_id') // Only fetch the `goods_id` field
+        .select('goods_id')
         .single();
 
-      if (goodError) {
+      if (goodError)
         throw new Error(`Failed to insert good: ${goodError.message}`);
-      }
 
-      relatedItemId = goodData?.goods_id; // Save the inserted good ID
+      relatedItemId = goodData?.goods_id;
       relatedItemType = 'good';
     } else {
       throw new Error(
@@ -118,23 +117,22 @@ export const createNewShipment = async (data) => {
           percentage: data.percentage,
           shipment_pet_id: relatedItemType === 'pet' ? relatedItemId : null,
           shipment_good_id: relatedItemType === 'good' ? relatedItemId : null,
-          intermediate_path1: intermediatePath1,
-          intermediate_path2: intermediatePath2,
+          intermediate_path1: data.intermediatePath1 ?? null, // Use null if undefined
+          intermediate_path2: data.intermediatePath2 ?? null, // Use null if undefined
         },
       ])
       .select()
       .single();
 
     if (shipmentError) {
-      console.log('error occured while creating shipment ......');
+      console.error('Error occurred while creating shipment:', shipmentError);
       throw new Error(`Failed to insert shipment: ${shipmentError.message}`);
     }
 
-    console.log(`shipmenntdata: ${shipmentData}`);
-    return { relatedItemId, relatedItemType, shipment: shipmentData }; // Return the ID, type, and shipment data
+    return { relatedItemId, relatedItemType, shipmentData }; // Return shipment info
   } catch (error) {
     console.error('Error creating shipment:', error.message);
-    throw error; // Rethrow the error to handle it elsewhere
+    throw error; // Rethrow the error for higher-level handling
   }
 };
 
@@ -229,10 +227,12 @@ export const updateGoods = async (goodId, updatedFields) => {
 };
 
 export const deleteShipment = async (shipmentId) => {
+  console.log(shipmentId);
   const { error } = await supabase
     .from('shipments')
     .delete()
     .eq('shipment_id', shipmentId);
+  return error;
 };
 
 export const updateShipmentLocation = async (shipmentId, newLocation) => {

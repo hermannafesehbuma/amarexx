@@ -469,7 +469,7 @@ async function Page({ params }) {
                     <FaPhoneAlt className=" text-orange-300 mr-2" />
                     <div>
                       <p className="text-xs text-gray-500">Phone number</p>
-                      <p> {data.shipper.phone_number}</p>
+                      <p> {data.receiver.phone_number}</p>
                     </div>
                   </div>
                 </div>

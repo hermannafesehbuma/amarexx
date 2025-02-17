@@ -8,18 +8,18 @@ export default function ShipmentLayout({ children }) {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user.email);
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem('user'));
+  //   console.log(user.email);
 
-    if (!user || user.email !== 'eamarex@gmail.com') {
-      router.replace('/admin'); // Redirect unauthorized users
-    } else {
-      setIsAuthorized(true);
-    }
-  }, [router]);
+  //   if (!user || user.email !== 'eamarex@gmail.com') {
+  //     router.replace('/admin'); // Redirect unauthorized users
+  //   } else {
+  //     setIsAuthorized(true);
+  //   }
+  // }, [router]);
 
-  if (!isAuthorized) return null; // Prevent layout rendering until check is complete
+  // if (!isAuthorized) return null; // Prevent layout rendering until check is complete
 
   return (
     <div className="grid md:grid-cols-4 xs:grid-cols-1 mt-[6.6%]">

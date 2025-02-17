@@ -3,37 +3,37 @@ export async function POST(req) {
     console.log('📩 Received request to send shipment notification email.');
 
     // Parse request body
-    const shipmentData = await req.json();
-    console.log('✅ Parsed request body:', shipmentData);
+    const shipmentDetails = await req.json();
+    console.log('✅ Parsed request body:', shipmentDetails);
 
     // Validate required fields
     if (
-      !shipmentData.trackingNumber ||
-      !shipmentData.shipper?.email ||
-      !shipmentData.receiver?.email ||
-      !shipmentData.status_id.status
+      !shipmentDetails.trackingNumber ||
+      !shipmentDetails.shipper?.email ||
+      !shipmentDetails.receiver?.email ||
+      !shipmentDetails.status_id.status
     ) {
-      console.error('❌ Missing required fields:', shipmentData);
+      console.error('❌ Missing required fields:', shipmentDetails);
       return new Response(
         JSON.stringify({ success: false, error: 'Missing required fields' }),
         { status: 400 }
       );
     }
 
-    console.log('🚚 Tracking Number:', shipmentData.trackingNumber);
-    console.log('📤 Shipper Email:', shipmentData.shipper.email);
-    console.log('📥 Receiver Email:', shipmentData.receiver.email);
-    console.log('📦 Shipment Status:', shipmentData.status_id.status);
+    console.log('🚚 Tracking Number:', shipmentDetails.trackingNumber);
+    console.log('📤 Shipper Email:', shipmentDetails.shipper.email);
+    console.log('📥 Receiver Email:', shipmentDetails.receiver.email);
+    console.log('📦 Shipment Status:', shipmentDetails.status_id.status);
 
     // Define the email payload
     const emailData = {
       personalizations: [
         {
           to: [
-            { email: shipmentData.shipper.email },
-            { email: shipmentData.receiver.email },
+            { email: shipmentDetails.shipper.email },
+            { email: shipmentDetails.receiver.email },
           ],
-          subject: `Shipment Created - Tracking Number: ${shipmentData.trackingNumber}`,
+          subject: `Shipment Created - Tracking Number: ${shipmentDetails.trackingNumber}`,
         },
       ],
       from: { email: process.env.EMAIL_USER },
@@ -128,20 +128,20 @@ export async function POST(req) {
                   <h1>Shipment Created</h1>
                   <p>Dear <span class="highlight">Customer</span>,</p>
       
-                  <p>We are excited to inform you that your shipment with tracking number <span class="highlight">${shipmentData.trackingNumber}</span> has been successfully created!</p>
+                  <p>We are excited to inform you that your shipment with tracking number <span class="highlight">${shipmentDetails.trackingNumber}</span> has been successfully created!</p>
       
                   <div class="status-update">
-                    <p><strong>Initial Status:</strong> ${shipmentData.status_id.status}</p>
+                    <p><strong>Initial Status:</strong> ${shipmentDetails.status_id.status}</p>
                   </div>
       
                   <div class="info">
                     <div>
                       <strong>Shipper:</strong><br>
-                      ${shipmentData.shipper.email}
+                      ${shipmentDetails.shipper.email}
                     </div>
                     <div>
                       <strong>Receiver:</strong><br>
-                      ${shipmentData.receiver.email}
+                      ${shipmentDetails.receiver.email}
                     </div>
                   </div>
       

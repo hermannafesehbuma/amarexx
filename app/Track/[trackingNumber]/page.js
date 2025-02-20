@@ -138,7 +138,7 @@ async function Page({ params }) {
                             <span className="text-xs text-gray-500">
                               Item Name
                             </span>
-                            {data.shipment_good_id.name}
+                            {data.shipment_good_id.item_name}
                           </div>
                         </div>
                       </>
@@ -162,12 +162,12 @@ async function Page({ params }) {
                     {data.shipment_good_id?.weight ? (
                       <>
                         <div className="flex">
-                          <MdOutlinePets className=" text-blue-600 mr-2" />
+                          <CiBoxes className=" text-blue-600 mr-2" />
                           <div className=" flex flex-col">
                             <span className="text-xs text-gray-500">
-                              Items Name
+                              Item Type
                             </span>
-                            {data.shipment_good_id.item_id.description}
+                            Graphic Card
                           </div>
                         </div>
                       </>
@@ -198,7 +198,7 @@ async function Page({ params }) {
                             <span className="text-xs text-gray-500">
                               Package Type
                             </span>
-                            {data.shipment_good_id.item_id.type}
+                            {data.package_type.type}
                           </div>
                         </div>
                       </>

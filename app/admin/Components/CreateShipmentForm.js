@@ -8,6 +8,7 @@ import ButtonBig from '@/app/Components/ButtonBig';
 import { useEffect, useState } from 'react';
 import MessageLog from './MessageLog';
 import { SlClose } from 'react-icons/sl';
+import { revalidateDashboard } from '@/app/actions/revalidation';
 
 function CreateShipmentForm({
   data: userData,
@@ -134,6 +135,7 @@ function CreateShipmentForm({
 
       if (responseData.success) {
         console.log('Notification emails sent successfully');
+        revalidateDashboard();
       } else {
         console.error(
           'Failed to send notification emails:',

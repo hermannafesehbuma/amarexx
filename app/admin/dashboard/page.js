@@ -7,6 +7,7 @@ import {
   fetchAllUsers,
 } from '@/app/api/supabaseapi';
 import ShipmentTable from '../Components/ShipmentTable';
+import { revalidatePath } from 'next/cache';
 async function Page() {
   const { data, error } = await fetchAllShipmentsforUpdate();
   const { data: users, error: usersError } = await fetchAllUsers();
@@ -15,6 +16,8 @@ async function Page() {
   const { statuses, error: statusError } = await fetchAllStatus();
   const { shippingtype, error: shippingError } = await fetchAllShippingTypes();
   if (error) error.message = 'Error Occured While Trying to  Fetch Data';
+
+  revalidatePath('/dashboard'); // Replace with the page that fetches data
 
   return (
     <>

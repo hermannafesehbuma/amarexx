@@ -143,7 +143,7 @@ export async function POST(req) {
     
               <p>Thank you for choosing <span class="highlight">Amarex Express</span>. We look forward to serving you.</p>
     
-              <a href="https://your-dashboard-link.com" class="cta">Track Your Shipment</a>
+              <a href="https://amarexx.com" class="cta">Track Your Shipment</a>
     
               <div class="footer">
                 <p>Best regards,<br>Amarex Express Team</p>

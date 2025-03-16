@@ -17,8 +17,6 @@ async function Page() {
   const { shippingtype, error: shippingError } = await fetchAllShippingTypes();
   if (error) error.message = 'Error Occured While Trying to  Fetch Data';
 
-  revalidatePath('/dashboard'); // Replace with the page that fetches data
-
   return (
     <>
       <div>

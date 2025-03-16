@@ -31,6 +31,8 @@ function Activity({ trackingNumber }) {
     getActivities();
   }, [trackingNumber]); // Run effect when trackingNumber changes
 
+  console.log(activities);
+
   if (loading) return <Loading />;
   if (error) return <p>Error: {error}</p>;
   if (!activities || activities.length === 0)
@@ -39,22 +41,22 @@ function Activity({ trackingNumber }) {
   return (
     <ul className="h-full overflow-y-auto text-sm">
       {activities.map((activity) => (
-        <li key={activity.id} className="flex pl-5 mb-2">
+        <li key={activity.trackingNumber} className="flex pl-5 mb-2">
           {' '}
           <Image
             src="/vertical-seperator.png"
             alt="seperator"
-            height={70}
-            width={50}
+            height={20}
+            width={10}
             className="mr-2"
           />
           <p>
             {' '}
             Your Delivery was{' '}
             {activity.status === 'In Transit' ? (
-              <span className="text-green-600">{activity.status}</span>
+              <span className="text-green-600">{activity.status.status}</span>
             ) : (
-              <span className="text-orange-600">{activity.status}</span>
+              <span className="text-orange-600">{activity.status.status}</span>
             )}{' '}
             at{' '}
             <span className="text-blue-600"> {activity.present_address}</span>{' '}

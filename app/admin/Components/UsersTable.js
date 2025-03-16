@@ -2,40 +2,62 @@
 
 import { deleteUser } from '@/app/api/supabaseapi';
 import ErrorBox from '@/app/dashboard/Components/ErrorBox';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import UpdateUsersMenu from './UpdateUsersMenu';
+import Loading from '../loading';
+import MessageLog from './MessageLog';
 
 function UsersTable({ data, error }) {
   const [editMenuOpen, setEditMenuOpen] = useState(false);
-  const [activeUser, setActiveUser] = useState('null');
+  const [activeUser, setActiveUser] = useState(null);
+  const [loading, setIsLoading] = useState(false);
   const [errMessage, setErrMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  function handleDeleteUser(userId) {
-    deleteUser(userId);
+
+  async function handleDeleteUser(userId) {
+    console.log(userId);
+    const error = await deleteUser(userId);
+
+    if (error) {
+      setErrMessage('This User Failed to Delete, Try Again');
+    } else {
+      setSuccessMessage('User has been deleted successfully');
+    }
   }
+
   function handleEditUser(user) {
-    const { user_id: userId } = user; // Destructure userId from the user object
     setEditMenuOpen(true);
     setActiveUser(user);
   }
 
   return (
     <div className="bg-white mt-10 p-10 shadow text-sm">
-      {editMenuOpen ? (
+      {errMessage ? (
+        <MessageLog
+          message={errMessage}
+          setMessage={setErrMessage}
+          value={false}
+        />
+      ) : (
+        <MessageLog
+          message={successMessage}
+          setMessage={setSuccessMessage}
+          value={true}
+        />
+      )}
+      {editMenuOpen && (
         <UpdateUsersMenu
           editMenuOpen={editMenuOpen}
           setEditMenuOpen={setEditMenuOpen}
           activeUser={activeUser}
         />
-      ) : (
-        ''
       )}
       <div className="w-full overflow-x-auto">
         <table className="w-[100%]">
           <thead>
-            <tr className=" ">
+            <tr>
               <th className="text-left pb-5 border-b border-primary">
                 User&apos;s Names
               </th>
@@ -67,7 +89,7 @@ function UsersTable({ data, error }) {
                   <td className="text-left py-5 border-b">{user.address}</td>
                   <td className="py-5 border-b">
                     <FaEdit
-                      className="text-green-600  cursor-pointer"
+                      className="text-green-600 cursor-pointer"
                       onClick={() => handleEditUser(user)}
                     />
                   </td>

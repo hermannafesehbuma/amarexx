@@ -1,7 +1,13 @@
 'use client';
 
 import React, { useContext, useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMap,
+  Tooltip,
+} from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import * as L from 'leaflet';
@@ -121,9 +127,28 @@ function LeafletMap({ olat, olng, dlat, dlng, percentage, shipmentId }) {
           percentage={percentage}
           onThirdMarkerUpdate={setThirdMarker}
         />
-        <Marker position={[olat, olng]} icon={customIcon} />
+        <Marker position={[olat, olng]} icon={customIcon}>
+          {' '}
+          <Tooltip
+            permanent
+            direction="top"
+            offset={[0, -40]} // Moves tooltip higher above the marker
+            className="custom-tooltip"
+          >
+            Origin
+          </Tooltip>
+        </Marker>
         {thirdMarker && <Marker position={thirdMarker} icon={customIcon} />}
-        <Marker position={[dlat, dlng]} icon={customIcon} />
+        <Marker position={[dlat, dlng]} icon={customIcon}>
+          <Tooltip
+            permanent
+            direction="top"
+            offset={[0, -40]} // Moves tooltip higher above the marker
+            className="custom-tooltip"
+          >
+            Destination
+          </Tooltip>
+        </Marker>
       </MapContainer>
 
       {/* Button to toggle map view */}

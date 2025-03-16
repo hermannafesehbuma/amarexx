@@ -70,7 +70,7 @@ export function TrackingForm({ className }) {
           }`}
         >
           {loading ? (
-            <span>
+            <span className="flex">
               Tracking
               <LoadingSpinner />
             </span>

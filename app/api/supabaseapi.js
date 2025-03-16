@@ -1,4 +1,5 @@
 'use server';
+import { revalidatePath } from 'next/cache';
 import { supabase } from '../supabaseClient';
 export const fetchShipmentByTrackingNumber = async (trackingNumber) => {
   const error = {};
@@ -157,8 +158,12 @@ export const addNewUser = async (data) => {
 };
 
 export const deleteUser = async (userId) => {
+  console.log(userId);
   const { error } = await supabase.from('users').delete().eq('user_id', userId);
-  return error;
+  if (!error) {
+    revalidatePath('/dashboard/users'); // 🔄 Revalidate the Users page
+  }
+  return error; // Return error instead of throwing it
 };
 
 export const updateUser = async (userId, updatedFields) => {
@@ -167,7 +172,9 @@ export const updateUser = async (userId, updatedFields) => {
     .update(updatedFields) // Use updated fields
     .eq('user_id', userId)
     .select();
-
+  if (!error) {
+    revalidatePath('/dashboard/users'); // 🔄 Revalidate the Users page
+  }
   return { data, error };
 };
 
@@ -232,6 +239,9 @@ export const deleteShipment = async (shipmentId) => {
     .from('shipments')
     .delete()
     .eq('shipment_id', shipmentId);
+  if (!error) {
+    revalidatePath('/dashboard'); // 🔄 Revalidate the Users page
+  }
   return error;
 };
 
@@ -253,7 +263,7 @@ export const updateShipmentLocation = async (shipmentId, newLocation) => {
 export const fetchActivity = async (trackingNumber) => {
   const { data: activity, error } = await supabase
     .from('activity')
-    .select('*, shipment_id(status_id(status))')
+    .select('*, status(status)')
     .eq('trackingNumber', trackingNumber)
     .order('time', { ascending: false }) // Sorts by time (newest first)
     .throwOnError(); // Ensure it throws errors
@@ -277,9 +287,14 @@ export const updateStatusShipment = async (shipmentId, updatedFields) => {
 };
 
 export const createNewActivity = async (activityData) => {
-  const { data: dataActivity, error } = await supabase
-    .from('activity')
-    .insert([activityData]);
+  const { data: dataActivity, error } = await supabase.from('activity').insert([
+    {
+      trackingNumber: activityData.trackingNumber,
+      status: activityData.packageStatus,
+      present_address: activityData.presentAddress,
+      time: activityData.time,
+    },
+  ]);
 
   if (error) {
     console.error('Error inserting activity:', error);

@@ -60,7 +60,7 @@ export async function POST(req) {
                 margin: 0 auto;
               }
               h1 {
-                color: #fcb819;
+                color: #005f99;
                 font-size: 28px;
                 font-weight: 600;
                 text-align: center;
@@ -68,7 +68,7 @@ export async function POST(req) {
               }
               .status-update {
                 background-color: #e6f7ff;
-                border-left: 6px solid #fcb819;
+                border-left: 6px solid #005f99;
                 padding: 15px;
                 margin: 30px 0;
                 font-size: 18px;
@@ -98,7 +98,7 @@ export async function POST(req) {
               }
               .highlight {
                 font-weight: bold;
-                color: #fcb819;
+                color: #005f99;
               }
               .cta {
                 display: block;

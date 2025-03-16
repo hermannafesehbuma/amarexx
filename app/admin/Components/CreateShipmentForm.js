@@ -1,5 +1,6 @@
 'use client';
 import {
+  createNewActivity,
   createNewShipment,
   fetchTrackingNumber,
   updateStatusShipment,
@@ -10,14 +11,7 @@ import MessageLog from './MessageLog';
 import { SlClose } from 'react-icons/sl';
 import { revalidateDashboard } from '@/app/actions/revalidation';
 
-function CreateShipmentForm({
-  data: userData,
-  transittimes,
-  error,
-  transitError,
-  allPackageType,
-  packageError,
-}) {
+function CreateShipmentForm({ data: userData, transittimes }) {
   const [countries, setCountries] = useState([]);
   const [originSelectedCountry, setOriginSelectedCountry] = useState('');
   const [destinationSelectedCountry, setdestinationSelectedCountry] =
@@ -103,6 +97,13 @@ function CreateShipmentForm({
       intermediatePath2: formData.get('intermediatePath2') || null,
     };
 
+    const activityData = {
+      trackingNumber: data.trackingNumber,
+      packageStatus: data.packageStatus,
+      presentAddress: 'Warehouse',
+      time: new Date().toISOString(),
+    };
+
     console.log(data);
     // Reset the error message and success message before validation
     setErrMessage('');
@@ -111,6 +112,7 @@ function CreateShipmentForm({
     try {
       // Step 1: Update the shipment status
       const { shipmentData } = await createNewShipment(data);
+      await createNewActivity(activityData);
 
       if (!shipmentData) {
         console.error('Failed to update shipment status');

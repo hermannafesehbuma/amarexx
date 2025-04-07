@@ -167,7 +167,7 @@ async function Page({ params }) {
                             <span className="text-xs text-gray-500">
                               Item Type
                             </span>
-                            Graphic Card
+                            Specialized
                           </div>
                         </div>
                       </>

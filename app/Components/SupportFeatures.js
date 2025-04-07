@@ -32,9 +32,9 @@ function SupportFeatures() {
           <FaCreditCard className="text-5xl my-5" />
           <h3 className="font-bold my-5">Billing Questions</h3>
           <p className="my-5">Monday - Friday: 9 a.m. to 12 p.m.</p>
-          <ButtonBigTransparent className="px-10 py-3  rounded-full flex items-center border-2 border-primary">
+          {/* <ButtonBigTransparent className="px-10 py-3  rounded-full flex items-center border-2 border-primary">
             +1 724 426-1410 <GrNext />
-          </ButtonBigTransparent>
+          </ButtonBigTransparent> */}
           <br />
           Or by email:
           <span className="underline text-blue-800">support@amarexx.com</span>
@@ -43,9 +43,9 @@ function SupportFeatures() {
           <HiChatBubbleBottomCenterText className="text-5xl my-5" />
           <h3 className="font-bold my-5">Technical Support</h3>
           <p className="my-5">Monday - Friday: 8:30 am to 6 p.m.</p>
-          <ButtonBigTransparent className="px-10 py-3  rounded-full flex items-center border-2 border-primary">
+          {/* <ButtonBigTransparent className="px-10 py-3  rounded-full flex items-center border-2 border-primary">
             +1 724 426-1410 <GrNext />
-          </ButtonBigTransparent>
+          </ButtonBigTransparent> */}
           <br />
           Or by email:
           <span className="underline text-blue-800">support@amarexx.com</span>

@@ -22,7 +22,7 @@ function SupportFeatures() {
             <br /> Saturday: 8 a.m. to 5 p.m.
           </p>
           <ButtonBigTransparent className="px-10 py-3  rounded-full flex items-center border-2 border-primary">
-            +1 724 426-1410 <GrNext />
+            +1 980-413-4975 <GrNext />
           </ButtonBigTransparent>
           <br />
           Or by email:

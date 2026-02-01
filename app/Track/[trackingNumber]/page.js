@@ -71,7 +71,7 @@ async function Page({ params }) {
             <MdOutlineLocalShipping className="border-2 border-gray-900 text-4xl rounded-full px-2 bg-blue-600" />
             <div className="px-2">
               {data.status_id.status === 'On Hold' ||
-              data.status_id.status === 'Cancelled' ? (
+                data.status_id.status === 'Cancelled' ? (
                 <span className="text-2xl text-orange-600">
                   {data.status_id.status}
                 </span>
@@ -316,7 +316,7 @@ async function Page({ params }) {
                       <span className="text-xs text-gray-500">
                         Total Freight
                       </span>
-                      ${data.totalFreight}
+                      £{data.totalFreight}
                     </div>
                   </div>
                 </div>
@@ -359,7 +359,7 @@ async function Page({ params }) {
                 <div className="flex">
                   <CiClock1 className=" text-blue-600 mr-2" />
                   <div className=" flex flex-col">
-                    <span className="text-xs text-gray-500">Pickup Time</span>
+                    <span className="text-xs text-gray-500">Delivery Time</span>
                     {data.pickupTime}
                   </div>
                 </div>
